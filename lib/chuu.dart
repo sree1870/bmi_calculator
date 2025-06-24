@@ -14,7 +14,7 @@ class _BmiState extends State<Bmi> {
   String result="";
   void cals(){
     double height= double.parse(heightcontroller.text)/100;
-  double weight= double.parse(weightcontroller.text)/100;
+  double weight= double.parse(weightcontroller.text);
     double bmi= weight/(height*height);
   setState(() {
     result= 'your bmi is ${bmi.toStringAsFixed(2)}';
