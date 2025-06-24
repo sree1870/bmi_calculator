@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
 
-class Bmi extends StatelessWidget {
+class Bmi extends StatefulWidget {
   const Bmi({super.key});
 
+  @override
+  State<Bmi> createState() => _BmiState();
+}
+
+class _BmiState extends State<Bmi> {
+  final  heightcontroller = TextEditingController();
+  final  weightcontroller = TextEditingController();
+  double bmi=0;
+  String result="";
+  void cals(){
+    double height= double.parse(heightcontroller.text)/100;
+  double weight= double.parse(weightcontroller.text)/100;
+    double bmi= weight/(height*height);
+  setState(() {
+    result= 'your bmi is ${bmi.toStringAsFixed(2)}';
+
+  });
+
+
+
+
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +54,7 @@ class Bmi extends StatelessWidget {
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
-                        TextField(
+                        TextField(controller:heightcontroller,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(11),
@@ -44,7 +66,7 @@ class Bmi extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 15),
-                        TextField(
+                        TextField(controller:weightcontroller,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(11),
@@ -59,7 +81,7 @@ class Bmi extends StatelessWidget {
 
                         Container(
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () { cals();},
                             child: Text('CALCULATE'),
                           ),
                           height: 60,
@@ -72,6 +94,7 @@ class Bmi extends StatelessWidget {
                             ),
                           ),
                         ),
+                        Text(result)
                       ],
                     ),
                   ),
