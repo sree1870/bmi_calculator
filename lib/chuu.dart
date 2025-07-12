@@ -41,7 +41,7 @@ class _BmiState extends State<Bmi> {
             children: [
               Text(
                 'BMI CALCULATOR',
-                style: TextStyle(color: Colors.white, fontSize: 70),
+                style: TextStyle(color: Colors.white, fontSize: 50),
               ),
               SizedBox(
                 height: 300,
